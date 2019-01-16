@@ -131,7 +131,7 @@ if (!empty($_POST['save'])) {
 
 <style>
 
-.color-schemes-custom  input {
+.color-schemes-custom input {
 	margin: .4rem;
 }
 
@@ -140,11 +140,11 @@ if (!empty($_POST['save'])) {
 }
 
 .wp-picker-holder {
-	display:none;
+	display: none;
 }
 
 .wp-color-result-text {
-	display:none;
+	display: none;
 }
 
 .headerImage, .hamburgerImage, .loadingSpinner {
@@ -183,9 +183,45 @@ if (!empty($_POST['save'])) {
 
 		<!-- add content form -->
 				<div class="details">
-					<p class="title">Select Colour Scheme</p>
+					<h2 class="title">Colour Scheme</h2>
 						<div class="spacer-20"></div>
 							<form method="post" id="color-settings" enctype="multipart/form-data">
+
+								<div class="holder">
+									<label for="themeColour">Theme colour</label>
+									<input value="<?= $theme->getThemeColour() ?>" class="themeColour" type="text" name="themeColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
+									<div class="changedElement7" style="background:<?= $theme->getThemeColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="backgroundColour">Background colour</label>
+									<input  value="<?= $theme->getBackgroundColour() ?>" class="backgroundColour" type="text" name="backgroundColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
+									<div class="changedElement8" style="background:<?= $theme->getBackgroundColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="textColour">Text colour</label>
+									<input  value="<?= $theme->getTextColour() ?>" class="textColour" type="text" name="textColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
+									<div style="background:<?= $theme->getTextColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
+								</div>
+								<div class="spacer-15"></div>
+								
+								<div class="holder">
+									<label for="highlightsColour">Highlights colour</label>
+									<input  value="<?= $theme->getHighlightsColour() ?>" class="highlightsColour" type="text" name="highlightsColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
+									<div style="background:<?= $theme->getHighlightsColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="borderColour">Border colour</label>
+									<input  value="<?= $theme->getBorderColour() ?>" class="borderColour" type="text" name="borderColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
+									<div style="background:<?= $theme->getBorderColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
+								</div>
+								<div class="spacer-15"></div>
+
 								<div class="holder">
 									<label>Menu icon colour</label>
 									<input value="<?= $theme->getBmBurgerBarsBackground() ?>" class="bmBurgerBarsBackground" type="text" name="bmBurgerBarsBackground" id="bmBurgerBarsBackground" placeholder="Enter hex value" onkeyup="changeColour(this);" />
@@ -229,33 +265,6 @@ if (!empty($_POST['save'])) {
 								<div class="spacer-15"></div>
 
 								<div class="holder">
-									<label for="themeColour">Theme colour</label>
-									<input value="<?= $theme->getThemeColour() ?>" class="themeColour" type="text" name="themeColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
-									<div class="changedElement7" style="background:<?= $theme->getThemeColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="backgroundColour">Background colour</label>
-									<input  value="<?= $theme->getBackgroundColour() ?>" class="backgroundColour" type="text" name="backgroundColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
-									<div class="changedElement8" style="background:<?= $theme->getBackgroundColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="textColour">Text colour</label>
-									<input  value="<?= $theme->getTextColour() ?>" class="textColour" type="text" name="textColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
-									<div style="background:<?= $theme->getTextColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="menuSlideOutWidth">Menu slide out width (as a percentage)</label>
-									<input  value="<?= $theme->getMenuSlideOutWidth() ?>" class="menuSlideOutWidth" type="text" name="menuSlideOutWidth" placeholder="Enter a width value" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
 									<label for="sectionSliderTextColor">Navigation menu text colour</label>
 									<input  value="<?= $theme->getSectionSliderTextColor() ?>" class="sectionSliderTextColor" type="text" name="sectionSliderTextColor" placeholder="Enter hex value" onkeyup="changeColour(this);" />
 									<div style="background:<?= $theme->getSectionSliderTextColor() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
@@ -269,35 +278,24 @@ if (!empty($_POST['save'])) {
 								</div>
 								<div class="spacer-15"></div>
 
-								<div class="holder">
-									<label for="highlightsColour">Highlights colour</label>
-									<input  value="<?= $theme->getHighlightsColour() ?>" class="highlightsColour" type="text" name="highlightsColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
-									<div style="background:<?= $theme->getHighlightsColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
-								</div>
-								<div class="spacer-15"></div>
+								<h2 class="title">News Feed Options</h2>
+								<div class="spacer-20"></div>
 
-								<div class="holder">
-									<label for="borderColour">Border colour</label>
-									<input  value="<?= $theme->getBorderColour() ?>" class="borderColour" type="text" name="borderColour" placeholder="Enter hex value" onkeyup="changeColour(this);" />
-									<div style="background:<?= $theme->getBorderColour() ?>;height:20px; width: 40px; border:1px solid #E4E4E4; border-radius:2px;" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<input type="checkbox" name="sectionDownloadEnabled" <?= $theme->getSectionDownloadEnabled() ? 'checked' : '' ?> /> Section download enabled
-								<div class="spacer-20"></div>
-								
-								<input type="checkbox" name="multiSection" <?= $theme->getMultiSection() ? 'checked' : '' ?> /> Show child categories
-								<div class="spacer-20"></div>
-								
-								<input type="checkbox" name="flattenSections" <?= $theme->getFlattenSections() ? 'checked' : '' ?> /> Flatten sections
-								<div class="spacer-20"></div>
-								
 								<input type="checkbox" name="showDateBlockOnFeedListItem" <?= $theme->getShowDateBlockOnFeedListItem() ? 'checked' : '' ?> /> Show date on feed items
 								<div class="spacer-20"></div>
 								
 								<input type="checkbox" name="showAllFeed" <?= $theme->getShowAllFeed() ? 'checked' : '' ?> /> Show home section
 								<div class="spacer-20"></div>
+
+								<input type="checkbox" name="showDatesOnList" <?= $theme->getShowDatesOnList() ? 'checked' : '' ?> /> Show dates on list
+								<div class="spacer-20"></div>
+
+								<input type="checkbox" name="infiniteVerticalArticleScroll" <?= $theme->getInfiniteVerticalArticleScroll() ? 'checked' : '' ?> /> Infinite vertical article scroll
+								<div class="spacer-20"></div>
 								
+								<input type="checkbox" name="infiniteHorizontalArticleScroll" <?= $theme->getInfiniteHorizontalArticleScroll() ? 'checked' : '' ?> /> Infinite horizontal article scroll
+								<div class="spacer-20"></div>
+
 								<div class="holder">
 									<label for="imageGalleryHeight">Image gallery height (as px or vh value)</label>
 									<input  value="<?= $theme->getImageGalleryHeight() ?>" class="imageGalleryHeight" type="text" name="imageGalleryHeight" placeholder="Image gallery height" />
@@ -310,7 +308,70 @@ if (!empty($_POST['save'])) {
 								</div>
 								<div class="spacer-15"></div>
 
-								<input type="checkbox" name="showDatesOnList" <?= $theme->getShowDatesOnList() ? 'checked' : '' ?> /> Show dates on list
+								<div class="holder">
+									<label for="hamburgerImageMarginTop">Hamburger Image Margin Top (as a px value)</label>
+									<input  value="<?= $theme->getHamburgerImageMarginTop() ?>" class="hamburgerImageMarginTop" type="text" name="hamburgerImageMarginTop" placeholder="Hamburger Image Margin Top" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="maxWidth">Max width</label>
+									<input  value="<?= $theme->getMaxWidth() ?>" class="maxWidth" type="number" name="maxWidth" min="1" max="1920" /> px
+								</div>
+								<div class="spacer-15"></div>
+								
+								<div class="holder">
+									<label for="topHeros">Top hero posts</label>
+									<input  value="<?= $theme->getTopHeros() ?>" class="topHeros" type="number" min="1" max="5" name="topHeros" /> hero posts
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="newsItemDateFormat">News item date format</label>
+									<input  value="<?= $theme->getNewsItemDateFormat() ?>" class="newsItemDateFormat" type="text" name="newsItemDateFormat" placeholder="News item date format" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="newsItemTimeFormat">News item time format</label>
+									<input  value="<?= $theme->getNewsItemTimeFormat() ?>" class="newsItemTimeFormat" type="text" name="newsItemTimeFormat" placeholder="News item time format" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="defaultFeedPageSize">Feed page size</label>
+									<input  value="<?= $theme->getDefaultFeedPageSize() ?>" class="defaultFeedPageSize" type="number" min="1" max="50" name="defaultFeedPageSize" /> items per page
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="listAdInterval">Feed advert interval</label>
+									<input  value="<?= $theme->getListAdInterval() ?>" class="listAdInterval" type="number" min="1" max="20" name="listAdInterval" /> items
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="sectionPrefix">Category prefix</label>
+									<input  value="<?= $theme->getSectionPrefix() ?>" class="sectionPrefix" type="text" name="sectionPrefix" placeholder="Category prefix" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="dnsPrefetch">DNS Prefetch list (seperated by comma)</label>
+									<textarea class="dnsPrefetch" type="textarea" name="dnsPrefetch" placeholder="DNS Prefetch List"><?= implode(",",$theme->getDnsPrefetch()) ?></textarea>
+								</div>
+								<div class="spacer-15"></div>
+
+								<h2 class="title">Menu Options</h2>
+								<div class="spacer-20"></div>
+
+								<input type="checkbox" name="sectionDownloadEnabled" <?= $theme->getSectionDownloadEnabled() ? 'checked' : '' ?> /> Section download enabled
+								<div class="spacer-20"></div>
+								
+								<input type="checkbox" name="multiSection" <?= $theme->getMultiSection() ? 'checked' : '' ?> /> Show child categories
+								<div class="spacer-20"></div>
+								
+								<input type="checkbox" name="flattenSections" <?= $theme->getFlattenSections() ? 'checked' : '' ?> /> Flatten sections
 								<div class="spacer-20"></div>
 								
 								<input type="checkbox" name="showSearch" <?= $theme->getShowSearch() ? 'checked' : '' ?> /> Show menu search bar
@@ -320,7 +381,13 @@ if (!empty($_POST['save'])) {
 								<div class="spacer-20"></div>
 
 								<div class="holder">
-									<label for="searchParam">Query parameter for search e.g. "s")</label>
+									<label for="menuSlideOutWidth">Menu slide out width (as a percentage)</label>
+									<input  value="<?= $theme->getMenuSlideOutWidth() ?>" class="menuSlideOutWidth" type="text" name="menuSlideOutWidth" placeholder="Enter a width value" />
+								</div>
+								<div class="spacer-15"></div>
+
+								<div class="holder">
+									<label for="searchParam">Query parameter for search e.g. "s"</label>
 									<input  value="<?= $theme->getSearchParam() ?>" class="searchParam" type="text" name="searchParam" placeholder="Query parameter for search" />
 								</div>
 								<div class="spacer-15"></div>
@@ -330,18 +397,15 @@ if (!empty($_POST['save'])) {
 									<input  value="<?= $theme->getSearchAction() ?>" class="searchAction" type="text" name="searchAction" placeholder="Search action" />
 								</div>
 								<div class="spacer-15"></div>
-								
+
 								<div class="holder">
-									<label for="maxWidth">Max width</label>
-									<input  value="<?= $theme->getMaxWidth() ?>" class="maxWidth" type="number" name="maxWidth" min="1" max="1920" />
+									<label for="shareTitlePrefix">Share Title Prefix</label>
+									<input  value="<?= $theme->getShareTitlePrefix() ?>" class="shareTitlePrefix" type="text" name="shareTitlePrefix" placeholder="Share Title Prefix" />
 								</div>
 								<div class="spacer-15"></div>
-								
-								<div class="holder">
-									<label for="topHeros">Top hero posts</label>
-									<input  value="<?= $theme->getTopHeros() ?>" class="topHeros" type="number" min="1" max="5" name="topHeros" />
-								</div>
-								<div class="spacer-15"></div>
+
+								<h2 class="title">Social Share Scripts</h2>
+								<div class="spacer-20"></div>
 
 								<div class="holder">
 									<label for="twitterEmbedUrl">Twitter embed script URL</label>
@@ -355,69 +419,18 @@ if (!empty($_POST['save'])) {
 								</div>
 								<div class="spacer-15"></div>
 
-								<div class="holder">
-									<label for="shareTitlePrefix">Share Title Prefix</label>
-									<input  value="<?= $theme->getShareTitlePrefix() ?>" class="shareTitlePrefix" type="text" name="shareTitlePrefix" placeholder="Share Title Prefix" />
-								</div>
-								<div class="spacer-15"></div>
+								<h2 class="title">Additional Customization</h2>
+								<div class="spacer-20"></div>
 
 								<div class="holder">
 									<label for="customStyles">Custom Styles</label>
 									<textarea class="customStyles" type="textarea" name="customStyles" placeholder="Custom Styles"><?= $theme->getCustomStyles() ?></textarea>
 								</div>
 								<div class="spacer-15"></div>
-								
-								<div class="holder">
-									<label for="hamburgerImageMarginTop">Hamburger Image Margin Top(as a px value)</label>
-									<input  value="<?= $theme->getHamburgerImageMarginTop() ?>" class="hamburgerImageMarginTop" type="text" name="hamburgerImageMarginTop" placeholder="Hamburger Image Margin Top" />
-								</div>
-								<div class="spacer-15"></div>
 
 								<div class="holder">
 									<label for="customHtml">Custom HTML</label>
 									<textarea class="customHtml" type="textarea" name="customHtml" placeholder="Custom HTML"><?= $theme->getCustomHtml() ?></textarea>
-								</div>
-								<div class="spacer-15"></div>
-								
-								<input type="checkbox" name="infiniteVerticalArticleScroll" <?= $theme->getInfiniteVerticalArticleScroll() ? 'checked' : '' ?> /> Infinite vertical article scroll
-								<div class="spacer-20"></div>
-								
-								<input type="checkbox" name="infiniteHorizontalArticleScroll" <?= $theme->getInfiniteHorizontalArticleScroll() ? 'checked' : '' ?> /> Infinite horizontal article scroll
-								<div class="spacer-20"></div>
-
-								<div class="holder">
-									<label for="newsItemDateFormat">News item date format</label>
-									<input  value="<?= $theme->getNewsItemDateFormat() ?>" class="newsItemDateFormat" type="text" name="newsItemDateFormat" placeholder="News item date format" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="newsItemTimeFormat">News item date format</label>
-									<input  value="<?= $theme->getNewsItemTimeFormat() ?>" class="newsItemTimeFormat" type="text" name="newsItemTimeFormat" placeholder="News item time format" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="defaultFeedPageSize">Feed page size</label>
-									<input  value="<?= $theme->getDefaultFeedPageSize() ?>" class="defaultFeedPageSize" type="number" min="1" max="50" name="defaultFeedPageSize" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="listAdInterval">Feed advert interval</label>
-									<input  value="<?= $theme->getListAdInterval() ?>" class="listAdInterval" type="number" min="1" max="20" name="listAdInterval" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="sectionPrefix">Category prefix</label>
-									<input  value="<?= $theme->getSectionPrefix() ?>" class="sectionPrefix" type="text" name="sectionPrefix" placeholder="Category prefix" />
-								</div>
-								<div class="spacer-15"></div>
-
-								<div class="holder">
-									<label for="dnsPrefetch">DNS Prefetch list (seperated by comma)</label>
-									<textarea class="dnsPrefetch" type="textarea" name="dnsPrefetch" placeholder="DNS Prefetch List"><?= implode(",",$theme->getDnsPrefetch()) ?></textarea>
 								</div>
 								<div class="spacer-15"></div>
 
@@ -443,7 +456,7 @@ if (!empty($_POST['save'])) {
 									<input type="file" name="loadingSpinner" style="padding: 7px;"/>
 									<?= $loadingSpinnerMsg ?>
 								</div>
-							<div class="spacer-20"></div>
+								<div class="spacer-20"></div>
 
 							<div class="submit">
 								<input type="submit" name="save" class="save" />
