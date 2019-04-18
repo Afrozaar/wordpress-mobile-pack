@@ -87,6 +87,31 @@ You can also download a number of mobile emulators that can run on a desktop PC 
 
 Please note that the mobile web app will be enabled only on supported devices: iPhones, Android smartphones, Windows Phone 8 and Firefox OS. Only the following browsers are compatible: Safari, Google Chrome, Android - Native Browser, Internet Explorer 10 and Firefox.
 
+== Changelog ==
+
+= 1.8.3 =
+* Minified browser fallback script
+
+= 1.8.2 =
+* Modified browser fallback script
+
+= 1.8.1 =
+* Fixed bug where non admin users were locked out of edit screens
+
+= 1.8.0 =
+* Enabling full multisite support, PWA is now configurable per site on a multisite install
+* Improved file handling
+* General UI Fixes
+
+= 1.7.5 =
+* Improved routing for articles and handling of trailing slash in URLS
+
+= 1.7.4 =
+* Added optional fields for light icons and application endpoint field
+
+= 1.7.3 =
+* Full code refactor, removing of unused classes and functionality
+
 == Frequently Asked Questions ==
 
 = When I visit my website from a smartphone, I don't see any posts or pages =
