@@ -157,7 +157,7 @@
             var browser = detect(),
                 widthViewport = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             if (("ios" === browser.name && 10.3 <= parseFloat(browser.version) && "iOS" === browser.os || "chrome" === browser
-                    .name && 62 <= parseFloat(browser.version) && (browser.os === 'Android OS' || browser.os === 'iOS')) && -1 === window.location.pathname
+                    .name && 62 <= parseFloat(browser.version) && (browser.os === "Android OS" || browser.os === "iOS")) && -1 === window.location.pathname
                     .indexOf("about-us") && -1 === window.location.pathname.indexOf("contact-us") && !getParameterByName("noapp") &&
                 widthViewport <= 500) {
                 var fetch_text = function (e) {
